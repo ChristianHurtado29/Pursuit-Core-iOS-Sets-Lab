@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 // Uncomment the "assert" lines for each problem when you have a solution, and run the playground to test.  When you have uncommented out the assert lines, no error messages or print statements means that your code is working correctly.
 
@@ -7,24 +7,33 @@ import UIKit
 // Create a new array numbersWithNoDuplicates that has all of the elements from numbers without any duplicates.  It should be in the same order as the original.
 
 let numbers = [1,1,2,4,4,4,6,6,7,8]
-
 var numbersWithNoDuplicates = [Int]()
 
-// Your code here
+numbersWithNoDuplicates = Array(Set(numbers)).sorted()
 
-//assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], but got \(numbersWithNoDuplicates)")
+assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], but got \(numbersWithNoDuplicates)")
 
 // Questions Two
 
 // Create a new array scoresThatAppearOnce that has all the elements from scores that appear exactly once.  It should be in the same order as the original.
 
-let scores = [1, 77, 83, 32, 77, 77, 83, 32, 99]
+var scores = [1, 77, 83, 32, 77, 77, 83, 32, 99]
+var scoresThatAppearOnce = Set<Int>()
+var visitedNum = [Int]()
+var setOfNumbers = 0
 
-var scoresThatAppearOnce = [Int]()
+for (index,num) in scores.enumerated(){
+    print(index)
+    if !visitedNum.contains(num) {
+        scoresThatAppearOnce.insert(num)
+        visitedNum.append(num)
+        } else {
+        scoresThatAppearOnce.remove(num)
+        }
+    }
+print(scoresThatAppearOnce.sorted())
 
-// Your code here
-
-//assert(scoresThatAppearOnce == [1, 99], "Was expecting [1, 99], but got \(scoresThatAppearOnce)")
+assert(scoresThatAppearOnce == [1, 99], "Was expecting [1, 99], but got \(scoresThatAppearOnce)")
 
 // Question Three
 
@@ -35,15 +44,17 @@ var scoresThatAppearOnce = [Int]()
 let arrOne = [1,2,3,4,5]
 let arrTwo = [3,4,5,6,7]
 
-var arrThree: [Int] = []
+let addedOne = Set(arrOne)
+let addedTwo = Set(arrTwo)
 
-// Your code here
+var arrThree = addedOne.union(addedTwo).sorted()
 
-//assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(arrThree)")
+
+assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(arrThree)")
 
 // b.
 
-// Given arrFour and arrFive, create a variable arrSix with is equal to the INTERSECTION of arrFour and arrFive.  If should not contain any duplicate elements.  Sort arrSix from smallest to greatest.
+// Given arrFour and arrFive, create a variable arrSix which is equal to the INTERSECTION of arrFour and arrFive.  It should not contain any duplicate elements.  Sort arrSix from smallest to greatest.
 
 let arrFour = [1,2,3,4,5]
 let arrFive = [3,4,5,6,7]
@@ -63,11 +74,10 @@ let numsTwo = [1, 2, 3, 4, 5, 6]
 let numsThree = [5, 6, 7, 8, 9, 10, 11, 12]
 let numsFour = [1, 3, 4, 5, 6, 7, 9]
 
-var allNumsWithNoDuplicates: [Int] = []
+var allNumsWithNoDuplicates = Array(Set(numsOne + numsTwo + numsThree + numsFour)).sorted()
 
-// Your code here
 
-//assert(allNumsWithNoDuplicates == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "Was expecting [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], but got \([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])")
+assert(allNumsWithNoDuplicates == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "Was expecting [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], but got \([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])")
 
 
 // Question Five
@@ -89,11 +99,6 @@ var strThreeIsPangram: Bool = false
 //assert(strOneIsPangram == true, "Was expecting true, but got \(strOneIsPangram)")
 //assert(strTwoIsPangram == false, "Was expecting false, but got \(strTwoIsPangram)")
 //assert(strThreeIsPangram == true, "Was expecting false, but got \(strThreeIsPangram)")
-
-
-
-
-
 
 
 
