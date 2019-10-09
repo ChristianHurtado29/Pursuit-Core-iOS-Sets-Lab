@@ -98,8 +98,6 @@ var strThreeIsPangram: Bool = false
 let alphabet = ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z")
 
     
-}
-
 //assert(strOneIsPangram == true, "Was expecting true, but got \(strOneIsPangram)")
 //assert(strTwoIsPangram == false, "Was expecting false, but got \(strTwoIsPangram)")
 //assert(strThreeIsPangram == true, "Was expecting false, but got \(strThreeIsPangram)")
